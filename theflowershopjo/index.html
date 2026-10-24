@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Flower Shop — Floral Atelier · An-Najaf, Amman</title>
+<meta name="description" content="The Flower Shop — hand-tied bouquets, wedding florals and same-day delivery across Amman. An-Najaf, Jordan. Order on WhatsApp +962 79 923 9449.">
+<meta name="theme-color" content="#F2EDE3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='%23A8402D'%3E%3Cellipse cx='12' cy='12' rx='2.6' ry='10'/%3E%3Cellipse cx='12' cy='12' rx='2.6' ry='10' transform='rotate(60 12 12)'/%3E%3Cellipse cx='12' cy='12' rx='2.6' ry='10' transform='rotate(120 12 12)'/%3E%3C/g%3E%3Ccircle cx='12' cy='12' r='2.2' fill='%2320261E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+<noscript><style>.preloader{display:none!important}</style></noscript>
+
+<!-- Shared SVG symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ic-flower" viewBox="0 0 24 24">
+    <g fill="currentColor">
+      <ellipse cx="12" cy="12" rx="2.4" ry="10"/>
+      <ellipse cx="12" cy="12" rx="2.4" ry="10" transform="rotate(60 12 12)"/>
+      <ellipse cx="12" cy="12" rx="2.4" ry="10" transform="rotate(120 12 12)"/>
+    </g>
+    <circle cx="12" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  </symbol>
+  <symbol id="ic-arrow" viewBox="0 0 14 14">
+    <path d="M2 12 12 2M4.5 2H12v7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-down" viewBox="0 0 14 14">
+    <path d="M7 1v11M2.5 8 7 12.5 11.5 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-close" viewBox="0 0 14 14">
+    <path d="M2 2l10 10M12 2 2 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<div class="cursor-tag" aria-hidden="true"></div>
+
+<!-- Preloader -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="pre-inner">
+    <svg class="pre-flower" viewBox="0 0 120 120" aria-hidden="true">
+      <g class="pre-petals" fill="#A8402D">
+        <ellipse cx="60" cy="31" rx="10" ry="24"/>
+        <ellipse cx="60" cy="31" rx="10" ry="24" transform="rotate(45 60 60)"/>
+        <ellipse cx="60" cy="31" rx="10" ry="24" transform="rotate(90 60 60)"/>
+        <ellipse cx="60" cy="31" rx="10" ry="24" transform="rotate(135 60 60)"/>
+        <ellipse cx="60" cy="31" rx="10" ry="24" transform="rotate(180 60 60)"/>
+        <ellipse cx="60" cy="31" rx="10" ry="24" transform="rotate(225 60 60)"/>
+        <ellipse cx="60" cy="31" rx="10" ry="24" transform="rotate(270 60 60)"/>
+        <ellipse cx="60" cy="31" rx="10" ry="24" transform="rotate(315 60 60)"/>
+      </g>
+      <circle cx="60" cy="60" r="11" fill="#20261E"/>
+      <circle cx="60" cy="60" r="3.6" fill="#D9A441"/>
+    </svg>
+    <div class="pre-word mask"><span class="mask-in">The Flower Shop</span></div>
+    <p class="pre-sub">FLORAL ATELIER — AN-NAJAF · AMMAN</p>
+  </div>
+</div>
+
+<!-- Ambient falling petals -->
+<canvas id="petals" aria-hidden="true"></canvas>
+
+<!-- Navigation -->
+<header class="nav" id="nav">
+  <a class="brand" href="#hero" data-scroll>
+    <svg class="brand-mark"><use href="#ic-flower"/></svg>
+    <span>The Flower <em>Shop</em></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#about" data-scroll>The Craft</a>
+    <a href="#collection" data-scroll>Collection</a>
+    <a href="#film" data-scroll>In Motion</a>
+  </nav>
+  <div class="nav-right">
+    <a class="btn btn-ink btn-sm" href="https://wa.me/962799239449" target="_blank" rel="noopener">Order <svg class="i"><use href="#ic-arrow"/></svg></a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu-links" aria-label="Menu">
+    <a href="#hero" data-scroll><i>01</i>The Bloom</a>
+    <a href="#about" data-scroll><i>02</i>The Craft</a>
+    <a href="#collection" data-scroll><i>03</i>Collection</a>
+    <a href="#film" data-scroll><i>04</i>In Motion</a>
+    <a href="#order" data-scroll><i>05</i>Order</a>
+  </nav>
+  <div class="menu-foot">
+    <a href="tel:+962799239449">+962 79 923 9449</a>
+    <a href="https://www.instagram.com/theflowershopjo/" target="_blank" rel="noopener">@theflowershopjo</a>
+    <span>An-Najaf · Amman</span>
+  </div>
+</div>
+
+<main>
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="hero">
+    <div class="hero-ghost" lang="ar" aria-hidden="true">زهور</div>
+
+    <div class="hero-stage" id="stage" data-cursor="DRAG" aria-hidden="true">
+      <div class="ground" id="ground"></div>
+      <div class="scene">
+        <div class="fw" id="flowerIdle">
+          <div class="fw" id="flowerScrub">
+            <div class="fw flower-tilt" id="flowerTilt">
+              <div class="fw" id="flowerMouse">
+                <div class="fw" id="flowerDrag">
+                  <div class="flower" id="flower">
+                    <div class="center"><span class="dots"></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-copy">
+      <p class="kicker" id="heroKicker">Floral atelier — An-Najaf, Amman</p>
+      <h1 class="hero-title">
+        <span class="mask"><span class="mask-in">The Flower</span></span>
+        <span class="mask"><span class="mask-in"><em>Shop</em></span></span>
+      </h1>
+      <p class="hero-sub" id="heroSub">Hand-tied bouquets, wedding florals and everyday romance — arranged in An-Najaf and delivered across Amman the same day.</p>
+      <div class="hero-cta" id="heroCta">
+        <a class="btn btn-ink" href="https://wa.me/962799239449" target="_blank" rel="noopener">Order a bouquet <svg class="i"><use href="#ic-arrow"/></svg></a>
+        <a class="link-plain" href="#collection" data-scroll>See the collection <svg class="i"><use href="#ic-down"/></svg></a>
+      </div>
+    </div>
+
+    <div class="bloom-hint" id="bloomHint">
+      <span class="bloom-label" id="bloomLabel">Scroll to bloom</span>
+      <span class="bloom-bar"><i id="bloomFill"></i></span>
+    </div>
+  </section>
+
+  <!-- ================= MARQUEE ================= -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="mqTrack">
+      <div class="mq-group">
+        <span>Fresh cuts daily</span><svg class="mq-ic"><use href="#ic-flower"/></svg>
+        <span>Same-day delivery across Amman</span><svg class="mq-ic"><use href="#ic-flower"/></svg>
+        <span>Weddings &amp; events</span><svg class="mq-ic"><use href="#ic-flower"/></svg>
+        <span>Hand-tied bouquets</span><svg class="mq-ic"><use href="#ic-flower"/></svg>
+        <span>An-Najaf · Amman · Jordan</span><svg class="mq-ic"><use href="#ic-flower"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-side">
+        <span class="label" data-reveal>01 — The Craft</span>
+      </div>
+      <div class="about-body">
+        <p class="manifesto" id="manifesto">Every bouquet is a sentence written in stems — a congratulations, an apology, a love letter, an ordinary Tuesday made extraordinary. We hand-tie each order in our little shop in An-Najaf, wrap it in paper and ribbon, and carry it across Amman the same day.</p>
+        <ul class="meta">
+          <li data-reveal><span>Find the shop</span><a href="https://maps.google.com/?q=An-Najaf,+Amman,+Jordan" target="_blank" rel="noopener">An-Najaf, Amman — Jordan</a></li>
+          <li data-reveal><span>Call or WhatsApp</span><a href="tel:+962799239449">+962 79 923 9449</a></li>
+          <li data-reveal><span>Follow</span><a href="https://www.instagram.com/theflowershopjo/" target="_blank" rel="noopener">@theflowershopjo</a></li>
+          <li data-reveal><span>Delivery</span><span class="v">Same-day, across Amman</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COLLECTION ================= -->
+  <section class="collection" id="collection">
+    <div class="sec-head">
+      <div>
+        <span class="label" data-reveal>02 — The Collection</span>
+        <h2 class="h2 mask"><span class="mask-in">Eleven frames from the shop floor</span></h2>
+      </div>
+      <p class="sec-note" data-reveal>Keep scrolling — the wall slides sideways.<br>Tap any frame to look closer.</p>
+    </div>
+
+    <div class="track" id="track">
+      <div class="plate intro-plate">
+        <p class="intro-line">Fresh cuts, wrapped with <em>intention</em> — every stem that enters the shop leaves as a small ceremony.</p>
+      </div>
+
+      <figure class="plate v1" data-cursor="VIEW">
+        <span class="idx">№ 01</span>
+        <div class="ph"><div class="pzoom"><img src="/images/1.png" alt="The Signature — hand-tied bouquet in house wrap"></div></div>
+        <figcaption><span class="cap-name">The Signature</span><span class="cap-tag">Hand-tied · house wrap</span></figcaption>
+      </figure>
+
+      <figure class="plate v2" data-cursor="VIEW">
+        <span class="idx">№ 02</span>
+        <div class="ph"><div class="pzoom"><img src="/images/2.png" alt="Blush Study — soft pastels with silk ribbon" loading="lazy"></div></div>
+        <figcaption><span class="cap-name">Blush Study</span><span class="cap-tag">Soft pastels · silk ribbon</span></figcaption>
+      </figure>
+
+      <figure class="plate v3" data-cursor="VIEW">
+        <span class="idx">№ 03</span>
+        <div class="ph"><div class="pzoom"><img src="/images/3.png" alt="The Atelier — where stems become sentences" loading="lazy"></div></div>
+        <figcaption><span class="cap-name">The Atelier</span><span class="cap-tag">Where stems become sentences</span></figcaption>
+      </figure>
+
+      <figure class="plate v4" data-cursor="VIEW">
+        <span class="idx">№ 04</span>
+        <div class="ph"><div class="pzoom"><img src="/images/4.png" alt="Market Morning — picked at dawn" loading="lazy"></div></div>
+        <figcaption><span class="cap-name">Market Morning</span><span class="cap-tag">Picked at dawn</span></figcaption>
+      </figure>
+
+      <figure class="plate v2" data-cursor="VIEW">
+        <span class="idx">№ 05</span>
+        <div class="ph"><div class="pzoom"><img src="/images/5.png" alt="Crimson Letter — roses that need no words" loading="lazy"></div></div>
+        <figcaption><span class="cap-name">Crimson Letter</span><span class="cap-tag">Roses that need no words</span></figcaption>
+      </figure>
+
+      <figure class="plate v1" data-cursor="VIEW">
+        <span class="idx">№ 06</span>
+        <div class="ph"><div class="pzoom"><img src="/images/6.png" alt="White Noise — ivory and eucalyptus" loading="lazy"></div></div>
+        <figcaption><span class="cap-name">White Noise</span><span class="cap-tag">Ivory &amp; eucalyptus</span></figcaption>
+      </figure>
+
+      <figure class="plate v3" data-cursor="VIEW">
+        <span class="idx">№ 07</span>
+        <div class="ph"><div class="pzoom"><img src="/images/7.png" alt="Petals and Paper — the wrapping detail" loading="lazy"></div></div>
+        <figcaption><span class="cap-name">Petals &amp; Paper</span><span class="cap-tag">The wrapping detail</span></figcaption>
+      </figure>
+
+      <figure class="plate v4" data-cursor="VIEW">
+        <span class="idx">№ 08</span>
+        <div class="ph"><div class="pzoom"><img src="/images/8.png" alt="The Wild One — untamed seasonal mix" loading="lazy"></div></div>
+        <figcaption><span class="cap-name">The Wild One</span><span class="cap-tag">Untamed seasonal mix</span></figcaption>
+      </figure>
+
+      <figure class="plate v2" data-cursor="VIEW">
+        <span class="idx">№ 09</span>
+        <div class="ph"><div class="pzoom"><img src="/images/9.png" alt="Golden Hour — warm tones in late light" loading="lazy"></div></div>
+        <figcaption><span class="cap-name">Golden Hour</span><span class="cap-tag">Warm tones · late light</span></figcaption>
+      </figure>
+
+      <figure class="plate v3" data-cursor="VIEW">
+        <span class="idx">№ 10</span>
+        <div class="ph"><div class="pzoom"><img src="/images/10.png" alt="Something Blue — bespoke bridal piece" loading="lazy"></div></div>
+        <figcaption><span class="cap-name">Something Blue</span><span class="cap-tag">Bespoke bridal</span></figcaption>
+      </figure>
+
+      <figure class="plate v1" data-cursor="VIEW">
+        <span class="idx">№ 11</span>
+        <div class="ph"><div class="pzoom"><img src="/images/11.png" alt="See You Soon — the shop door in An-Najaf" loading="lazy"></div></div>
+        <figcaption><span class="cap-name">See You Soon</span><span class="cap-tag">The shop door · An-Najaf</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="track-progress"><i id="trackFill"></i></div>
+  </section>
+
+  <!-- ================= FILM ================= -->
+  <section class="film" id="film">
+    <div class="sec-head">
+      <div>
+        <span class="label" data-reveal>03 — In Motion</span>
+        <h2 class="h2 mask"><span class="mask-in">Fresh from <em>the atelier</em></span></h2>
+      </div>
+      <p class="sec-note" data-reveal>Three quiet moments from the shop floor.<br>Tap a film for sound.</p>
+    </div>
+
+    <div class="film-main" data-cursor="SOUND">
+      <video src="../Videos/1.mp4" muted loop playsinline autoplay preload="metadata"></video>
+      <span class="chip">Tap for sound</span>
+    </div>
+
+    <div class="film-grid">
+      <figure class="film-item a" data-cursor="SOUND" data-reveal>
+        <video src="../Videos/2.mp4" muted loop playsinline preload="metadata"></video>
+        <figcaption>Wrapping, tying &amp; ribbon — the last five minutes before a bouquet leaves.</figcaption>
+      </figure>
+      <figure class="film-item b" data-cursor="SOUND" data-reveal>
+        <video src="../Videos/3.mp4" muted loop playsinline preload="metadata"></video>
+        <figcaption>Behind the counter — An-Najaf, most afternoons.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= ORDER ================= -->
+  <section class="order" id="order">
+    <div class="order-inner">
+      <span class="label" data-reveal>04 — Order</span>
+      <h2 class="order-title mask"><span class="mask-in">Say it <em>in flowers.</em></span></h2>
+      <p class="order-sub" data-reveal>Every bouquet leaves with a handwritten note. Write yours — we'll ink it, tie it to the stems, and deliver it across Amman today.</p>
+
+      <div class="note-wrap" id="noteWrap">
+        <div class="note-card" id="noteCard" data-reveal>
+          <span class="note-tag">Enclosed note</span>
+          <p class="note-text" id="noteText">For you — because Tuesday deserved flowers.</p>
+          <span class="note-sign">— with love, The Flower Shop</span>
+        </div>
+        <div class="note-form" data-reveal>
+          <label class="note-label" for="noteInput">Your note <span id="noteCount">0 / 90</span></label>
+          <input id="noteInput" type="text" maxlength="90" placeholder="Write something worth wrapping…" autocomplete="off">
+          <div class="note-actions">
+            <a class="btn btn-ink" id="waSend" href="https://wa.me/962799239449" target="_blank" rel="noopener">Send on WhatsApp <svg class="i"><use href="#ic-arrow"/></svg></a>
+            <a class="link-plain light" href="tel:+962799239449">or call +962 79 923 9449</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="foot-mark mask"><span class="mask-in" id="footMark">The Flower <em>Shop</em></span></div>
+  <div class="foot-grid">
+    <div class="foot-col" data-reveal>
+      <span class="label">Visit</span>
+      <p>An-Najaf,<br>Amman — Jordan</p>
+    </div>
+    <div class="foot-col" data-reveal>
+      <span class="label">Talk</span>
+      <a href="tel:+962799239449">+962 79 923 9449</a>
+      <a href="https://wa.me/962799239449" target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+    <div class="foot-col" data-reveal>
+      <span class="label">Follow</span>
+      <a href="https://www.instagram.com/theflowershopjo/" target="_blank" rel="noopener">@theflowershopjo</a>
+      <span class="ig-note">Daily bouquets &amp; behind-the-scenes</span>
+    </div>
+    <div class="foot-col" data-reveal>
+      <span class="label">Local time</span>
+      <p class="clock" id="clock">—:—:—</p>
+      <span class="ig-note">Amman · GMT+3</span>
+    </div>
+  </div>
+  <div class="foot-base">
+    <span>© <span id="year">2025</span> The Flower Shop — An-Najaf, Amman</span>
+    <span class="fb-mid"><svg class="i"><use href="#ic-flower"/></svg> Bloom responsibly</span>
+    <span lang="ar" class="fb-ar">صُنع بحب في عمّان</span>
+    <a href="#hero" data-scroll>Back to the bloom <svg class="i up"><use href="#ic-down"/></svg></a>
+  </div>
+</footer>
+
+<!-- Overlays -->
+<div class="grain" aria-hidden="true"></div>
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Close"><svg class="i"><use href="#ic-close"/></svg></button>
+  <figure class="lb-fig">
+    <img id="lbImg" src="" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="../JS/script.js"></script>
+</body>
+</html>
